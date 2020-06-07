@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" rel="stylesheet" />
+    <title>Mapa de dispositivos</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body,
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZWd1em1hbmciLCJhIjoiY2s4bDBtcXhmMDJsMzNqcnFmenNuYTZ3cCJ9.IFPkgwkhgtzgaFRoy3NORg';
+
+    var socket = io();
+    socket.on('connect', () => {
+        console.log("conectado al socket");
+    })
+
+    var map;
+    function loadMap() {
+        map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-74.081749, 4.6097102],
+            zoom: 12,
+            pitch: 60
+        });
+
+        map.on('load', function () {
+            map.addSource('mobil', { type: 'geojson', data: null });
+            map.addLayer({
+                'id': 'drone',
+                'type': 'symbol',
+                'source': 'mobil',
+                'layout': {
+                    'icon-image': 'rocket-15',
+                    'text-field': [
+                        'format',
+                        ['upcase', ['get', 'nombre']],
+                        { 'font-scale': 0.8 },
+                    ],
+                }
+            });
+
+            socket.on('process', (data) => {
+                console.info(data);
+                map.getSource('mobil').setData(JSON.parse(data))
+            })
+
+        });
+    }
+    window.addEventListener('load', () => loadMap())
+</script>
+
+</html>
