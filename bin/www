@@ -39,7 +39,7 @@ canalMobil.on('connection', socket => {
 })
 
 mensajes.pipe(
-  operators.bufferTime(2000),
+  operators.bufferTime(1000),
   operators.map(arr => Array.from(new Set(arr.map(c => c.nombre))).map(nombre => arr.find(e => e.nombre == nombre))),
   operators.map(arr => {
     let coords = arr.reduce((recolector, mobil) => {
@@ -50,7 +50,8 @@ mensajes.pipe(
         },
         type: 'Feature',
         properties: {
-          nombre: mobil.nombre
+          nombre: mobil.nombre,
+          aceleracion: mobil.aceleracion
         }
       });
       return recolector;
@@ -60,8 +61,8 @@ mensajes.pipe(
       type: 'FeatureCollection',
       features: coords
     };
-  }),
-  operators.tap(data => console.info(JSON.stringify(data)))
+  })
+  //,operators.tap(info => console.log(JSON.stringify(info)))
 ).subscribe(dat => io.sockets.emit('process', JSON.stringify(dat)))
 
 /**

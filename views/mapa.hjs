@@ -51,16 +51,23 @@
                 'source': 'mobil',
                 'layout': {
                     'icon-image': 'rocket-15',
+                    'icon-rotate': 0,
+                    'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+                    'text-justify': 'auto',
+                    'text-offset': [1, 1],
                     'text-field': [
                         'format',
                         ['upcase', ['get', 'nombre']],
                         { 'font-scale': 0.8 },
-                    ],
+                        '\n',
+                        {},
+                        ['get', 'aceleracion'],
+                        { 'font-scale': 0.6 }
+                    ]
                 }
             });
 
             socket.on('process', (data) => {
-                console.info(data);
                 map.getSource('mobil').setData(JSON.parse(data))
             })
 

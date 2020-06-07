@@ -21,7 +21,7 @@
           <div class="card-body" id="card">
             <h1>{{ title }}</h1>
             <p>Por favor permite el acceso al GPS, ingresa tu nombre en el campo para identificarte en el mapa y
-              presiona conectar</p>
+              presiona conectar. Luego sacude el telefono para verte en el mapa.</p>
             <input type="text" class="form-control" id="nombre" placeholder="Nombre">
             <hr>
             <button type="button" class="btn btn-primary" id="btn">conectar</button>
@@ -56,17 +56,18 @@
       //   3: timed out
     });
 
-    const sensorAbs = new AbsoluteOrientationSensor();
-    sensorAbs.onreading = () => {
-      datos.info = sensorAbs.quaternion
-      socket.emit('moving', datos);
-    };
+
+    if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', (ev)=>{
+            let aceleracion = (Math.pow(ev.acceleration.x, 2)  + Math.pow(ev.acceleration.y, 2) + Math.pow(ev.acceleration.z, 2)) / 3.0;
+            datos.aceleracion = aceleracion;
+        });
+    }
     
 
     let btn = document.getElementById("btn");
     btn.addEventListener('click', () => {
       datos.nombre = document.getElementById('nombre').value;
-      //sensorAbs.start();
       btn.setAttribute('disabled',true);
       let card = document.getElementById('card');
       let span = document.createElement('span');
