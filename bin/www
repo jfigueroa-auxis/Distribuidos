@@ -7,9 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('socketmovil:server');
 var http = require('http');
-var rxjs = require('rxjs');
-var operators = require('rxjs/operators');
-//var index = require('rxjs/index');
+var pubsub = require('../Sockets/pubsub');
 
 /**
  * Get port from environment and store in Express.
@@ -27,43 +25,14 @@ var server = http.createServer(app);
 /*** socket.io */
 
 var io = require('socket.io')(server);
-const mensajes = new rxjs.Subject();
 
 io.on('connection', (socket) => {
   console.log('conexion a traves del canal general');
 });
 
-const canalMobil = io.of('/mobil')
-canalMobil.on('connection', socket => {
-  socket.on('moving', datos => mensajes.next(datos));
-})
+pubsub.entrada(io);
+pubsub.salida(io);
 
-mensajes.pipe(
-  operators.bufferTime(1000),
-  operators.map(arr => Array.from(new Set(arr.map(c => c.nombre))).map(nombre => arr.find(e => e.nombre == nombre))),
-  operators.map(arr => {
-    let coords = arr.reduce((recolector, mobil) => {
-      recolector.push({
-        geometry: {
-          coordinates: [mobil.longitud, mobil.latitud],
-          type: 'Point'
-        },
-        type: 'Feature',
-        properties: {
-          nombre: mobil.nombre,
-          aceleracion: mobil.aceleracion
-        }
-      });
-      return recolector;
-    }, [])
-
-    return {
-      type: 'FeatureCollection',
-      features: coords
-    };
-  })
-  //,operators.tap(info => console.log(JSON.stringify(info)))
-).subscribe(dat => io.sockets.emit('process', JSON.stringify(dat)))
 
 /**
  * Listen on provided port, on all network interfaces.
