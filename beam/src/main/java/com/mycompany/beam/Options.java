@@ -5,17 +5,18 @@
  */
 package com.mycompany.beam;
 
+import org.apache.beam.runners.dataflow.options.DataflowPipelineOptions;
 import org.apache.beam.sdk.options.Description;
-import org.apache.beam.sdk.options.StreamingOptions;
 import org.apache.beam.sdk.options.Validation;
 import org.apache.beam.sdk.options.ValueProvider;
+
 
   /**
    * Options supported by {@link PubsubToPubsub}.
    *
    * <p>Inherits standard configuration options.
    */
-  public interface Options extends StreamingOptions {
+  public interface Options extends DataflowPipelineOptions {
     @Description(
         "The Cloud Pub/Sub subscription to consume from. "
             + "The name should be in the format of "

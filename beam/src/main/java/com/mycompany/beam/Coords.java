@@ -9,6 +9,11 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Coords implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2717774452991965948L;
     private String nombre;
     private double latitud;
     private double longitud;

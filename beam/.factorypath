@@ -27,12 +27,9 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-sdks-java-io-google-cloud-platform/2.21.0/beam-sdks-java-io-google-cloud-platform-2.21.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-sdks-java-expansion-service/2.21.0/beam-sdks-java-expansion-service-2.21.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-model-fn-execution/2.21.0/beam-model-fn-execution-2.21.0.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-runners-core-construction-java/2.21.0/beam-runners-core-construction-java-2.21.0.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/io/github/classgraph/classgraph/4.8.65/classgraph-4.8.65.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-sdks-java-extensions-google-cloud-platform-core/2.21.0/beam-sdks-java-extensions-google-cloud-platform-core-2.21.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/cloud/bigdataoss/gcsio/2.0.0/gcsio-2.0.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/apis/google-api-services-cloudresourcemanager/v1-rev20191206-1.30.3/google-api-services-cloudresourcemanager-v1-rev20191206-1.30.3.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/com/google/apis/google-api-services-storage/v1-rev20191011-1.30.3/google-api-services-storage-v1-rev20191011-1.30.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-sdks-java-extensions-protobuf/2.21.0/beam-sdks-java-extensions-protobuf-2.21.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/cloud/bigdataoss/util/2.0.0/util-2.0.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/api-client/google-api-client-java6/1.30.1/google-api-client-java6-1.30.1.jar" enabled="true" runInBatchMode="false"/>
@@ -133,4 +130,11 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/protobuf/protobuf-java/3.11.1/protobuf-java-3.11.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-sdks-java-extensions-json-jackson/2.21.0/beam-sdks-java-extensions-json-jackson-2.21.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-runners-google-cloud-dataflow-java/2.22.0/beam-runners-google-cloud-dataflow-java-2.22.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/beam/beam-runners-core-construction-java/2.22.0/beam-runners-core-construction-java-2.22.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/io/github/classgraph/classgraph/4.8.65/classgraph-4.8.65.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/google/apis/google-api-services-clouddebugger/v2-rev20200313-1.30.9/google-api-services-clouddebugger-v2-rev20200313-1.30.9.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/google/apis/google-api-services-dataflow/v1b3-rev20200305-1.30.9/google-api-services-dataflow-v1b3-rev20200305-1.30.9.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/google/apis/google-api-services-storage/v1-rev20200226-1.30.9/google-api-services-storage-v1-rev20200226-1.30.9.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/slf4j-simple/1.7.21/slf4j-simple-1.7.21.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>
