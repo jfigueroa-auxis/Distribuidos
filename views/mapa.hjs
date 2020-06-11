@@ -50,8 +50,6 @@
                 'type': 'symbol',
                 'source': 'mobil',
                 'layout': {
-                    'icon-image': 'rocket-15',
-                    'icon-rotate': 0,
                     'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
                     'text-justify': 'auto',
                     'text-offset': [1, 1],
@@ -59,15 +57,46 @@
                         'format',
                         ['upcase', ['get', 'nombre']],
                         { 'font-scale': 0.8 },
-                        '\n',
+                        /*'\n',
                         {},
                         ['get', 'aceleracion'],
-                        { 'font-scale': 0.6 }
+                        { 'font-scale': 0.6 }*/
                     ]
                 }
             });
 
+            map.addLayer({
+                id: 'collisions',
+                type: 'circle',
+                source: 'mobil',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['/',['number', ['get', 'aceleracion']],10],
+                        0,10,20,30,40,50,60,70,80,90
+                    ],
+                   'circle-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['/',['number', ['get', 'aceleracion']],10],
+                        0, '#73fc00',
+                        10, '#81e300',
+                        20, '#90c700',
+                        30, '#a0ab00',
+                        40, '#b18d00',
+                        50,'#bc7900',
+                        60,'#cd5a00',
+                        70,'#da4400',
+                        80,'#e43200',
+                        90, '#ff0000'
+                    ],
+                    'circle-opacity': 0.8
+                }
+            });
+
             socket.on('process', (data) => {
+                console.log(data);
                 map.getSource('mobil').setData(JSON.parse(data))
             })
 

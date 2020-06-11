@@ -17,7 +17,7 @@ const procesar = () => {
 
     mensajes.pipe(
         //tap(info => console.log(JSON.stringify(info)))
-        bufferTime(1000),
+        bufferTime(300),
         filter(arr => arr.length > 0),
         map(arr => Array.from(new Set(arr.map(c => c.nombre))).map(nombre => arr.find(e => e.nombre == nombre))),
         map(arr => {
